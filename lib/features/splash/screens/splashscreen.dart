@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tc_client_app/common/widgets/mainscreen.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
-import 'package:tc_client_app/constants/utils.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/splashscreen';
@@ -49,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: GlobalVariables.white,
         body: Center(
           child: Image(
-            width: screenWidthPercentage(context, percentage: 0.7),
+            width: 0.6.sw,
             image: const AssetImage(
               "assets/images/tclogo.png",
             ),

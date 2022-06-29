@@ -1,8 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
-import 'package:tc_client_app/constants/utils.dart';
 import 'package:tc_client_app/models/barber_model.dart';
 
 class SingleCardBarber extends StatelessWidget {
@@ -14,8 +13,8 @@ class SingleCardBarber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double cardWidth = screenWidth(context);
-    double cardHeight = screenHeightPercentage(context, percentage: 0.21);
+    double cardWidth = 1.sw;
+    double cardHeight = 200.h;
     double labelCardHeight = (cardHeight) * 0.4;
 
     return Container(
@@ -32,11 +31,11 @@ class SingleCardBarber extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
-            blurRadius: 4,
+            blurRadius: 4.r,
             offset: const Offset(2, 4),
           ),
         ],
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15.r),
       ),
       child: Stack(
         children: [
@@ -55,37 +54,28 @@ class SingleCardBarber extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: labelCardHeight * 0.4,
-                      child: FittedBox(
-                        alignment: Alignment.centerLeft,
-                        child: AutoSizeText(
-                          item.name,
-                          maxLines: 1,
-                          style: GoogleFonts.lexendDeca(
-                            color: GlobalVariables.blackSoft,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                    Text(
+                      item.name,
+                      maxLines: 1,
+                      style: GoogleFonts.lexendDeca(
+                        color: GlobalVariables.blackSoft,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20.sp,
                       ),
                     ),
-                    SizedBox(
-                      height: labelCardHeight * 0.3,
-                      child: FittedBox(
-                        child: AutoSizeText(
-                          item.address,
-                          maxLines: 1,
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lexendDeca(
-                            color: GlobalVariables.blackSoft,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
+                    Text(
+                      item.address,
+                      maxLines: 1,
+                      textAlign: TextAlign.left,
+                      style: GoogleFonts.lexendDeca(
+                        color: GlobalVariables.blackSoft,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
                       ),
                     ),
                   ],

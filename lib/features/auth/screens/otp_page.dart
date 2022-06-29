@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:tc_client_app/common/widgets/custom_button.dart';
+import 'package:tc_client_app/common/widgets/custom_textbutton.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
-import 'package:tc_client_app/constants/utils.dart';
 import 'package:tc_client_app/features/auth/widgets/background_auth_rev.dart';
 import 'package:tc_client_app/features/auth/widgets/headerback.dart';
 
@@ -46,63 +46,57 @@ class _OtpPageState extends State<OtpPage> {
         ),
         child: Stack(
           children: [
-            const BackgroundAuthRev(),
+            // const BackgroundAuthRev(),
             Scaffold(
               resizeToAvoidBottomInset: false,
-              backgroundColor: GlobalVariables.transparent,
+              backgroundColor: GlobalVariables.defaultGray,
               body: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: SizedBox(
                     width: double.infinity,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
                           const HeaderBack(),
-                          verticalSpaceCustom(context, 0.06),
+                          SizedBox(
+                            height: 55.h,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
-                                height: screenHeightPercentage(context,
-                                    percentage: 0.04),
-                                child: FittedBox(
-                                  alignment: Alignment.center,
-                                  child: AutoSizeText(
-                                    'Verifikasi OTP',
-                                    maxLines: 1,
-                                    style: GoogleFonts.lexendDeca(
-                                      color: GlobalVariables.blackSoft1,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
+                              Text(
+                                'Verifikasi OTP',
+                                maxLines: 1,
+                                style: GoogleFonts.lexendDeca(
+                                  color: GlobalVariables.blackSoft1,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 22.sp,
                                 ),
                               ),
                             ],
                           ),
-                          verticalSpaceCustom(context, 0.07),
+                          SizedBox(
+                            height: 55.h,
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: SizedBox(
-                              height: screenHeightPercentage(context,
-                                  percentage: 0.04),
-                              child: FittedBox(
-                                alignment: Alignment.center,
-                                child: AutoSizeText(
-                                  'Masukkan kode OTP yang telah dikirim ke email kamu',
-                                  maxLines: 1,
-                                  style: GoogleFonts.lexendDeca(
-                                    color: GlobalVariables.blackSoft1,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
+                            padding: EdgeInsets.symmetric(horizontal: 30.w),
+                            child: Text(
+                              'Masukkan kode OTP yang telah dikirim ke email kamu',
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.lexendDeca(
+                                color: GlobalVariables.blackSoft1,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15.sp,
                               ),
                             ),
                           ),
-                          verticalSpaceCustom(context, 0.03),
                           SizedBox(
-                            height: screenHeightPercentage(context,
-                                percentage: 0.095),
+                            height: 30.h,
+                          ),
+                          SizedBox(
+                            height: 70.h,
                             child: Form(
                               key: _otpFormKey,
                               child: PinCodeTextField(
@@ -126,12 +120,10 @@ class _OtpPageState extends State<OtpPage> {
                                   selectedColor: GlobalVariables.defaultOrange,
                                   inactiveColor: GlobalVariables.borderColor,
                                   disabledColor: GlobalVariables.borderColor,
-                                  fieldWidth: screenWidthPercentage(context,
-                                      percentage: 0.14),
-                                  fieldHeight: screenWidthPercentage(context,
-                                      percentage: 0.15),
+                                  fieldWidth: 50.w,
+                                  fieldHeight: 70.h,
                                   shape: PinCodeFieldShape.box,
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.r),
                                 ),
                                 onChanged: (String value) {
                                   setState(() {
@@ -141,63 +133,45 @@ class _OtpPageState extends State<OtpPage> {
                               ),
                             ),
                           ),
-                          verticalSpaceCustom(context, 0.06),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.035,
-                            child: AutoSizeText(
-                              "Tidak menerima kode OTP?",
-                              style: GoogleFonts.lexendDeca(
-                                color: GlobalVariables.blackSoft1,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
+                            height: 55.h,
+                          ),
+                          Text(
+                            "Tidak menerima kode OTP?",
+                            style: GoogleFonts.lexendDeca(
+                              color: GlobalVariables.blackSoft1,
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           hasExpired
-                              ? SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.055,
-                                  child: TextButton(
-                                    child: AutoSizeText(
-                                      "Kirim ulang kode",
-                                      style: GoogleFonts.lexendDeca(
-                                        color: GlobalVariables.red,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    onPressed: () async {
-                                      setState(() {
-                                        hasExpired = false;
-                                      });
-                                    },
-                                  ),
+                              ? CustomTextButton(
+                                  text: 'Kirim ulang kode',
+                                  fontSize: 15.sp,
+                                  onTap: () {},
+                                  textColor: GlobalVariables.red,
                                 )
-                              : SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.035,
-                                  child: TweenAnimationBuilder(
-                                    duration: const Duration(minutes: 2),
-                                    tween: Tween(
-                                        begin: const Duration(minutes: 2),
-                                        end: Duration.zero),
-                                    builder: (context, Duration value, child) {
-                                      final minutes = value.inMinutes;
-                                      final seconds = value.inSeconds % 60;
-                                      return AutoSizeText(
-                                        '($minutes : $seconds)',
-                                        style: GoogleFonts.lexendDeca(
-                                            color: GlobalVariables.red,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600),
-                                      );
-                                    },
-                                    onEnd: () {
-                                      setState(() {
-                                        hasExpired = true;
-                                      });
-                                    },
-                                  ),
+                              : TweenAnimationBuilder(
+                                  duration: const Duration(minutes: 2),
+                                  tween: Tween(
+                                      begin: const Duration(minutes: 2),
+                                      end: Duration.zero),
+                                  builder: (context, Duration value, child) {
+                                    final minutes = value.inMinutes;
+                                    final seconds = value.inSeconds % 60;
+                                    return Text(
+                                      '($minutes : $seconds)',
+                                      style: GoogleFonts.lexendDeca(
+                                          color: GlobalVariables.red,
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.w600),
+                                    );
+                                  },
+                                  onEnd: () {
+                                    setState(() {
+                                      hasExpired = true;
+                                    });
+                                  },
                                 ),
                         ],
                       ),
@@ -207,19 +181,21 @@ class _OtpPageState extends State<OtpPage> {
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(0, 0.65),
+              alignment: const AlignmentDirectional(0, 0.62),
               child: Material(
                 type: MaterialType.transparency,
-                child: SizedBox(
-                  height: screenHeightPercentage(context, percentage: 0.145),
+                child: Container(
+                  color: GlobalVariables.defaultGray,
+                  height: 110.h,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          padding: EdgeInsets.symmetric(horizontal: 15.w),
                           child: CustomButton(
                             text: 'Verifikasi',
+                            fontSize: 18.sp,
                             onTap: () {
                               _otpFormKey.currentState!.validate();
                               if (currentPin.length != 4) {
@@ -233,29 +209,23 @@ class _OtpPageState extends State<OtpPage> {
                                 });
                               }
                             },
-                            size: Size(
-                              screenWidth(context),
-                              screenHeightPercentage(context, percentage: 0.06),
-                            ),
-                            borderRadius: 50,
+                            size: Size(1.sw, 45.h),
+                            borderRadius: 8.r,
                           ),
                         ),
-                        verticalSpaceCustom(context, 0.022),
+                        SizedBox(
+                          height: 5.h,
+                        ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 30, right: 30),
-                          child: Container(
-                            alignment: Alignment.center,
-                            color: GlobalVariables.transparent,
-                            height: screenHeightPercentage(context,
-                                percentage: 0.05),
-                            child: AutoSizeText(
-                              'By signing up, you agree to TempatCukur’s Terms of Service and Privacy Policy',
-                              textAlign: TextAlign.justify,
-                              maxLines: 2,
-                              style: GoogleFonts.lexendDeca(
-                                color: GlobalVariables.blackSoft1,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          padding: EdgeInsets.symmetric(horizontal: 15.w),
+                          child: Text(
+                            'By signing up, you agree to TempatCukur’s Terms of Service and Privacy Policy.',
+                            textAlign: TextAlign.left,
+                            maxLines: 2,
+                            style: GoogleFonts.lexendDeca(
+                              color: GlobalVariables.blackSoft1,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ),

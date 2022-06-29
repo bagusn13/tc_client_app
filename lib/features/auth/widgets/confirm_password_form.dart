@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
 
@@ -43,7 +44,7 @@ class _ConfirmPasswordFormState extends State<ConfirmPasswordForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15, right: 15),
+      padding: EdgeInsets.symmetric(horizontal: 15.w),
       child: TextFormField(
         focusNode: _confirmPasswordFocusNode,
         keyboardType: TextInputType.text,
@@ -57,7 +58,8 @@ class _ConfirmPasswordFormState extends State<ConfirmPasswordForm> {
         ),
         style: GoogleFonts.lexendDeca(
           color: const Color(0xFF2B343A),
-          fontWeight: FontWeight.normal,
+          fontWeight: FontWeight.w400,
+          fontSize: 16.sp,
         ),
         validator: (value) {
           if (value!.isEmpty) {

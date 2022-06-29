@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tc_client_app/models/banner_model.dart';
 import 'package:tc_client_app/models/barber_model.dart';
@@ -121,7 +122,7 @@ class GlobalVariables {
 
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(8),
+    borderRadius: BorderRadius.circular(8.r),
     borderSide: const BorderSide(
       color: GlobalVariables.borderColor,
     ),
@@ -130,7 +131,7 @@ OutlineInputBorder outlineInputBorder() {
 
 OutlineInputBorder outlineFieldNormal() {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(8),
+    borderRadius: BorderRadius.circular(8.r),
     borderSide: const BorderSide(
       color: GlobalVariables.borderColor,
       width: 2,
@@ -140,7 +141,7 @@ OutlineInputBorder outlineFieldNormal() {
 
 OutlineInputBorder outlineFieldError() {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(8),
+    borderRadius: BorderRadius.circular(8.r),
     borderSide: const BorderSide(
       color: GlobalVariables.borderErrorColor,
       width: 2,
@@ -154,7 +155,8 @@ InputDecoration formDecorNormal(String labelText, bool errVal) {
     labelStyle: GoogleFonts.lexendDeca(
       color:
           errVal ? GlobalVariables.borderErrorColor : GlobalVariables.cadetGray,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w400,
+      fontSize: 16.sp,
     ),
     enabledBorder: outlineFieldNormal(),
     focusedBorder: outlineFieldNormal(),
@@ -162,7 +164,7 @@ InputDecoration formDecorNormal(String labelText, bool errVal) {
     focusedErrorBorder: outlineFieldError(),
     filled: true,
     fillColor: GlobalVariables.white,
-    contentPadding: const EdgeInsets.only(left: 16),
+    contentPadding: EdgeInsets.only(left: 16.w),
   );
 }
 
@@ -172,7 +174,8 @@ InputDecoration formDecorPassword(
     labelText: labelText,
     labelStyle: GoogleFonts.lexendDeca(
       color: errVal ? Colors.redAccent : const Color(0xFF95A1AC),
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w400,
+      fontSize: 16.sp,
     ),
     enabledBorder: outlineFieldNormal(),
     focusedBorder: outlineFieldNormal(),
@@ -180,9 +183,9 @@ InputDecoration formDecorPassword(
     focusedErrorBorder: outlineFieldError(),
     filled: true,
     fillColor: Colors.white,
-    contentPadding: const EdgeInsets.only(
-      left: 16,
-      right: 24,
+    contentPadding: EdgeInsets.only(
+      left: 16.w,
+      right: 24.w,
     ),
     suffixIcon: InkWell(
       onTap: onTap,

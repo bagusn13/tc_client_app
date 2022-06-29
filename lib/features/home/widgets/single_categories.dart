@@ -1,8 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
-import 'package:tc_client_app/constants/utils.dart';
 
 class SingleCategory extends StatelessWidget {
   final String image;
@@ -18,8 +17,6 @@ class SingleCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double widthLogo = screenWidth(context) / 5.5;
-
     return InkWell(
       onTap: onTap,
       child: Column(
@@ -28,31 +25,23 @@ class SingleCategory extends StatelessWidget {
             clipBehavior: Clip.antiAliasWithSaveLayer,
             color: GlobalVariables.transparent,
             elevation: 3,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100),
-            ),
+            shape: const CircleBorder(),
             child: Image.asset(
               image,
-              width: widthLogo,
-              height: widthLogo,
+              width: 75.w,
+              height: 75.w,
               fit: BoxFit.cover,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 2),
-            child: SizedBox(
-              width: widthLogo,
-              height: screenHeightPercentage(context, percentage: 0.028),
-              child: FittedBox(
-                alignment: Alignment.center,
-                child: AutoSizeText(
-                  categoryName,
-                  style: GoogleFonts.poppins(
-                    textStyle: const TextStyle(
-                      color: GlobalVariables.blackSoft1,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
+            padding: EdgeInsets.only(top: 2.h),
+            child: Text(
+              categoryName,
+              style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                  color: GlobalVariables.blackSoft1,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 15.sp,
                 ),
               ),
             ),

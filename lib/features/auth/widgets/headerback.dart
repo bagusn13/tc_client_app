@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tc_client_app/constants/utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tc_client_app/constants/global_variables.dart';
 
 class HeaderBack extends StatelessWidget {
   const HeaderBack({Key? key}) : super(key: key);
@@ -7,20 +8,21 @@ class HeaderBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20.h),
       child: Stack(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                height: screenWidthPercentage(context, percentage: 0.2),
+              Container(
+                color: GlobalVariables.transparent,
+                height: 85.h,
                 child: IconButton(
                   splashRadius: 20,
                   icon: const Icon(
                     Icons.arrow_back_ios_new_rounded,
                     color: Color(0xCD383838),
-                    size: 30,
+                    size: 35,
                   ),
                   onPressed: () {
                     Navigator.pop(context);
@@ -34,8 +36,7 @@ class HeaderBack extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/images/Logo_with_slogan_crop.png',
-                width: screenWidthPercentage(context, percentage: 0.5),
-                height: screenWidthPercentage(context, percentage: 0.2),
+                height: 85.h,
                 fit: BoxFit.contain,
               ),
             ],

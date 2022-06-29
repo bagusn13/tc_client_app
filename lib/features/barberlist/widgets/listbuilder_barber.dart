@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tc_client_app/constants/utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tc_client_app/features/barberlist/widgets/single_card_barber.dart';
 import 'package:tc_client_app/models/barber_model.dart';
 
@@ -15,14 +15,14 @@ class ListBuilderBarber extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: SizedBox(
-          width: screenWidth(context),
+          width: 1.sw,
           child: ListView.separated(
-            padding: const EdgeInsets.only(top: 10, bottom: 20),
+            padding: EdgeInsets.only(top: 10.h, bottom: 20.h),
             scrollDirection: Axis.vertical,
             itemCount: data.length,
-            separatorBuilder: (context, _) => const SizedBox(height: 15),
+            separatorBuilder: (context, _) => SizedBox(height: 15.h),
             itemBuilder: (context, index) =>
                 SingleCardBarber(item: data[index]),
           ),

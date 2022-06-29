@@ -16,30 +16,27 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          SingleCategory(
-            categoryName: 'Panggil',
-            image: 'assets/images/Icon_1_Panggil.png',
-            onTap: () {},
-          ),
-          SingleCategory(
-            categoryName: 'Pesan',
-            image: 'assets/images/Icon_2_Booking.png',
-            onTap: () {
-              _navigateToBarberList(context);
-            },
-          ),
-          SingleCategory(
-            categoryName: 'Franchise',
-            image: 'assets/images/Icon_3_Franchise.png',
-            onTap: () {},
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SingleCategory(
+          categoryName: 'Panggil',
+          image: 'assets/images/Icon_1_Panggil.png',
+          onTap: () {},
+        ),
+        SingleCategory(
+          categoryName: 'Pesan',
+          image: 'assets/images/Icon_2_Booking.png',
+          onTap: () {
+            _navigateToBarberList(context);
+          },
+        ),
+        SingleCategory(
+          categoryName: 'Franchise',
+          image: 'assets/images/Icon_3_Franchise.png',
+          onTap: () {},
+        ),
+      ],
     );
   }
 }

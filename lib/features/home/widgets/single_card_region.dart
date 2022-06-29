@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tc_client_app/constants/utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tc_client_app/models/region_model.dart';
 
 class SingleCardRegion extends StatelessWidget {
@@ -13,18 +13,19 @@ class SingleCardRegion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(2, 5, 5, 2),
+      padding: EdgeInsetsDirectional.fromSTEB(2.w, 5.h, 2.w, 5.h),
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         elevation: 4,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(15.r),
         ),
         child: Container(
-          width: screenWidth(context) / 2.5,
+          width: 135.w,
+          height: 170.h,
           decoration: BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
               image: Image.asset(
                 item.imageUrl,
               ).image,

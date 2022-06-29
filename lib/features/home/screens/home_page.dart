@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
-import 'package:tc_client_app/constants/utils.dart';
 import 'package:tc_client_app/features/home/widgets/appbar_logout.dart';
 import 'package:tc_client_app/features/home/widgets/login_button.dart';
 import 'package:tc_client_app/features/home/widgets/categories.dart';
@@ -26,8 +26,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize:
-            Size.fromHeight(screenHeightPercentage(context, percentage: 0.11)),
+        preferredSize: Size.fromHeight(80.h),
         child: AppBar(
           systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarBrightness: Brightness.dark,
@@ -39,9 +38,9 @@ class _HomePageState extends State<HomePage> {
           flexibleSpace: const AppbarLogout(),
           actions: const [],
           elevation: 3,
-          shape: const RoundedRectangleBorder(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(30),
+              bottom: Radius.circular(26.r),
             ),
           ),
         ),
@@ -51,20 +50,31 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           reverse: false,
           physics: const BouncingScrollPhysics(),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              verticalSpaceCustom(context, 0.015),
-              LoginButton(
-                onTap: widget.onTapLogin,
-              ),
-              verticalSpaceCustom(context, 0.02),
-              const Jumbotron(),
-              verticalSpaceCustom(context, 0.025),
-              const Categories(),
-              verticalSpaceCustom(context, 0.03),
-              const RegionSection(),
-            ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                SizedBox(
+                  height: 15.h,
+                ),
+                LoginButton(
+                  onTap: widget.onTapLogin,
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+                const Jumbotron(),
+                SizedBox(
+                  height: 16.h,
+                ),
+                const Categories(),
+                SizedBox(
+                  height: 18.h,
+                ),
+                const RegionSection(),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
@@ -8,6 +7,7 @@ class CustomTextButton extends StatelessWidget {
   final VoidCallback onTap;
   final Color? textColor;
   final Size? size;
+  final double? fontSize;
 
   const CustomTextButton({
     Key? key,
@@ -15,6 +15,7 @@ class CustomTextButton extends StatelessWidget {
     required this.onTap,
     this.textColor = GlobalVariables.blackSoft1,
     this.size = const Size(double.infinity, 50),
+    this.fontSize = 17,
   }) : super(key: key);
 
   @override
@@ -25,12 +26,12 @@ class CustomTextButton extends StatelessWidget {
         fixedSize: MaterialStateProperty.all(size),
         overlayColor: MaterialStateProperty.all(GlobalVariables.lightGray),
       ),
-      child: AutoSizeText(
+      child: Text(
         text,
         style: GoogleFonts.lexendDeca(
           color: textColor,
-          fontSize: 17,
-          fontWeight: FontWeight.w600,
+          fontSize: fontSize,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
 import 'package:tc_client_app/features/barberlist/widgets/listbuilder_barber.dart';
 import 'package:tc_client_app/features/barberlist/widgets/searchbar_barber.dart';
@@ -52,7 +53,7 @@ class _BarberListPageState extends State<BarberListPage> {
           backgroundColor: GlobalVariables.defaultGray,
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: Column(
                 children: [
                   SearchBar(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
 
@@ -28,7 +29,7 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(5, 20, 15, 10),
+      padding: EdgeInsetsDirectional.fromSTEB(10.w, 20.h, 10.w, 10.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -38,8 +39,8 @@ class _SearchBarState extends State<SearchBar> {
               Navigator.pop(context);
             }),
             child: Container(
-              height: 42,
-              width: 42,
+              height: 50.h,
+              // width: 50.h,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: GlobalVariables.transparent,
@@ -47,14 +48,14 @@ class _SearchBarState extends State<SearchBar> {
               child: const Icon(
                 Icons.arrow_back_rounded,
                 color: GlobalVariables.defaultOrange,
-                size: 30,
+                size: 35,
               ),
             ),
           ),
           Expanded(
             child: Container(
-              height: 42,
-              margin: const EdgeInsets.only(left: 10),
+              height: 50.h,
+              margin: EdgeInsets.only(left: 10.w),
               color: GlobalVariables.lightGray,
               child: TextFormField(
                 focusNode: _searchFocusNode,
@@ -64,20 +65,20 @@ class _SearchBarState extends State<SearchBar> {
                 decoration: InputDecoration(
                   prefixIcon: InkWell(
                     onTap: () {},
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.only(
-                        left: 6,
+                        left: 6.w,
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.search,
                         color: GlobalVariables.cadetGray,
-                        size: 23,
+                        size: 25,
                       ),
                     ),
                   ),
                   filled: true,
                   fillColor: Colors.transparent,
-                  contentPadding: const EdgeInsets.only(top: 10),
+                  contentPadding: EdgeInsets.symmetric(vertical: 10.h),
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(7),
@@ -96,22 +97,28 @@ class _SearchBarState extends State<SearchBar> {
                   hintText: 'Cari TempatCukur..',
                   hintStyle: GoogleFonts.poppins(
                     color: GlobalVariables.cadetGray,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16.sp,
                   ),
+                ),
+                style: GoogleFonts.lexendDeca(
+                  color: GlobalVariables.blackSoft1,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16.sp,
                 ),
               ),
             ),
           ),
           Container(
             color: GlobalVariables.lightGray,
-            height: 42,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 10,
+            height: 50.h,
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
             ),
             child: const Icon(
               Icons.map_outlined,
               color: GlobalVariables.defaultOrange,
-              size: 25,
+              size: 30,
             ),
           ),
         ],

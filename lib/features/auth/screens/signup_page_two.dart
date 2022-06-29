@@ -1,10 +1,9 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tc_client_app/common/widgets/custom_button.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
-import 'package:tc_client_app/constants/utils.dart';
 import 'package:tc_client_app/features/auth/screens/otp_page.dart';
 import 'package:tc_client_app/features/auth/widgets/background_auth_rev.dart';
 import 'package:tc_client_app/features/auth/widgets/headerback.dart';
@@ -52,12 +51,12 @@ class _SignUpPageTwoState extends State<SignUpPageTwo> {
         ),
         child: Stack(
           children: [
-            const BackgroundAuthRev(),
+            // const BackgroundAuthRev(),
             Scaffold(
-              backgroundColor: GlobalVariables.transparent,
+              backgroundColor: GlobalVariables.defaultGray,
               body: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: SingleChildScrollView(
                     reverse: false,
                     physics: const BouncingScrollPhysics(),
@@ -66,82 +65,73 @@ class _SignUpPageTwoState extends State<SignUpPageTwo> {
                       child: Column(
                         children: <Widget>[
                           const HeaderBack(),
-                          verticalSpaceCustom(context, 0.06),
+                          SizedBox(
+                            height: 60.h,
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            padding: EdgeInsets.symmetric(horizontal: 15.w),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                SizedBox(
-                                  height: screenHeightPercentage(context,
-                                      percentage: 0.04),
-                                  child: FittedBox(
-                                    alignment: Alignment.centerLeft,
-                                    child: AutoSizeText(
-                                      'Buat akun baru',
-                                      maxLines: 1,
-                                      textAlign: TextAlign.left,
-                                      style: GoogleFonts.lexendDeca(
-                                        color: GlobalVariables.blackSoft1,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
+                                Text(
+                                  'Buat akun baru',
+                                  maxLines: 1,
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.lexendDeca(
+                                    color: GlobalVariables.blackSoft1,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 22.sp,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          verticalSpaceCustom(context, 0.035),
+                          SizedBox(
+                            height: 25.h,
+                          ),
                           NameForm(
                             controller: _firstNameController,
                             label: 'Nama Depan',
                           ),
-                          verticalSpaceCustom(context, 0.016),
+                          SizedBox(
+                            height: 15.h,
+                          ),
                           NameForm(
                             controller: _lastNameController,
                             label: 'Nama Belakang',
                           ),
-                          verticalSpaceCustom(context, 0.016),
+                          SizedBox(
+                            height: 15.h,
+                          ),
                           PhoneForm(controller: _phoneController),
-                          verticalSpaceCustom(context, 0.04),
+                          SizedBox(
+                            height: 28.h,
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            padding: EdgeInsets.symmetric(horizontal: 15.w),
                             child: CustomButton(
                               text: 'Daftar',
+                              fontSize: 18.sp,
                               onTap: () {
                                 _navigateToOtpPage();
-                                // if (_signUpOneFormKey.currentState!
-                                //     .validate()) {
-                                //   print('valid');
-                                // } else {
-                                //   print('no valid');
-                                // }
                               },
-                              size: Size(
-                                screenWidth(context),
-                                screenHeightPercentage(
-                                  context,
-                                  percentage: 0.06,
-                                ),
-                              ),
-                              borderRadius: 50,
+                              size: Size(1.sw, 45.h),
+                              borderRadius: 8.r,
                             ),
                           ),
-                          verticalSpaceCustom(context, 0.022),
+                          SizedBox(
+                            height: 10.h,
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 30, right: 30),
-                            child: Container(
-                              alignment: Alignment.center,
-                              color: GlobalVariables.transparent,
-                              height: MediaQuery.of(context).size.height * 0.05,
-                              child: AutoSizeText(
-                                'By signing up, you agree to TempatCukur’s Terms of Service and Privacy Policy',
-                                textAlign: TextAlign.justify,
-                                maxLines: 2,
-                                style: GoogleFonts.lexendDeca(
-                                  color: GlobalVariables.blackSoft1,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                            padding: EdgeInsets.symmetric(horizontal: 15.w),
+                            child: Text(
+                              'By signing up, you agree to TempatCukur’s Terms of Service and Privacy Policy.',
+                              textAlign: TextAlign.left,
+                              maxLines: 2,
+                              style: GoogleFonts.lexendDeca(
+                                color: GlobalVariables.blackSoft1,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14.sp,
                               ),
                             ),
                           ),

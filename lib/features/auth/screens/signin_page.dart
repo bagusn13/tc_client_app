@@ -1,13 +1,12 @@
 // ignore_for_file: avoid_print
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tc_client_app/common/widgets/custom_button.dart';
 import 'package:tc_client_app/common/widgets/custom_textbutton.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
-import 'package:tc_client_app/constants/utils.dart';
 import 'package:tc_client_app/features/auth/screens/signup_page_one.dart';
 import 'package:tc_client_app/features/auth/widgets/background_auth_rev.dart';
 import 'package:tc_client_app/features/auth/widgets/email_form.dart';
@@ -51,12 +50,12 @@ class _SigninPageState extends State<SigninPage> {
         ),
         child: Stack(
           children: [
-            const BackgroundAuthRev(),
+            // const BackgroundAuthRev(),
             Scaffold(
-              backgroundColor: GlobalVariables.transparent,
+              backgroundColor: GlobalVariables.defaultGray,
               body: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: SingleChildScrollView(
                     reverse: true,
                     physics: const BouncingScrollPhysics(),
@@ -65,47 +64,50 @@ class _SigninPageState extends State<SigninPage> {
                       child: Column(
                         children: <Widget>[
                           const HeaderBack(),
-                          verticalSpaceCustom(context, 0.06),
+                          SizedBox(
+                            height: 60.h,
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            padding: EdgeInsets.symmetric(horizontal: 15.w),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                SizedBox(
-                                  height: screenHeightPercentage(context,
-                                      percentage: 0.04),
-                                  child: FittedBox(
-                                    alignment: Alignment.centerLeft,
-                                    child: AutoSizeText(
-                                      'Selamat Datang',
-                                      maxLines: 1,
-                                      textAlign: TextAlign.left,
-                                      style: GoogleFonts.lexendDeca(
-                                        color: GlobalVariables.blackSoft1,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
+                                Text(
+                                  'Selamat Datang',
+                                  maxLines: 1,
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.lexendDeca(
+                                    color: GlobalVariables.blackSoft1,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 22.sp,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          verticalSpaceCustom(context, 0.035),
+                          SizedBox(
+                            height: 25.h,
+                          ),
                           EmailForm(
                             controller: _emailController,
                           ),
-                          verticalSpaceCustom(context, 0.018),
+                          SizedBox(
+                            height: 16.h,
+                          ),
                           PasswordForm(
                             controller: _passwordController,
                           ),
-                          verticalSpaceCustom(context, 0.035),
+                          SizedBox(
+                            height: 28.h,
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            padding: EdgeInsets.symmetric(horizontal: 15.w),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 CustomButton(
                                   text: 'Masuk',
+                                  fontSize: 18.sp,
                                   onTap: () {
                                     if (_signInFormKey.currentState!
                                         .validate()) {
@@ -114,48 +116,32 @@ class _SigninPageState extends State<SigninPage> {
                                       print('no valid');
                                     }
                                   },
-                                  size: Size(
-                                    screenWidth(context) / 2.35,
-                                    screenHeightPercentage(
-                                      context,
-                                      percentage: 0.05,
-                                    ),
-                                  ),
+                                  size: Size(1.sw / 2.35, 45.h),
                                 ),
                                 CustomTextButton(
                                   text: 'Lupa Password?',
                                   onTap: () {},
-                                  size: Size(
-                                    screenWidth(context) / 2.35,
-                                    screenHeightPercentage(
-                                      context,
-                                      percentage: 0.05,
-                                    ),
-                                  ),
+                                  fontSize: 15.sp,
+                                  size: Size(1.sw / 2.35, 45.h),
                                 ),
                               ],
                             ),
                           ),
-                          verticalSpaceCustom(context, 0.01),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
-                                height: screenHeightPercentage(context,
-                                    percentage: 0.025),
-                                child: FittedBox(
-                                  child: AutoSizeText(
-                                    'Belum punya akun?',
-                                    style: GoogleFonts.getFont(
-                                      'Lexend Deca',
-                                      color: GlobalVariables.blackSoft1,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
+                              Text(
+                                'Belum punya akun?',
+                                style: GoogleFonts.getFont(
+                                  'Lexend Deca',
+                                  color: GlobalVariables.blackSoft1,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
                                 ),
                               ),
                               CustomTextButton(
                                 text: 'Yuk daftar!',
+                                fontSize: 14.sp,
                                 onTap: _navigateToSignUp,
                                 textColor: GlobalVariables.defaultOrange,
                               ),

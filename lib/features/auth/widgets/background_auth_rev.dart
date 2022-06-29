@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tc_client_app/constants/global_variables.dart';
-import 'package:tc_client_app/constants/utils.dart';
 
 class BackgroundAuthRev extends StatelessWidget {
   const BackgroundAuthRev({Key? key}) : super(key: key);
@@ -11,16 +10,12 @@ class BackgroundAuthRev extends StatelessWidget {
       decoration: const BoxDecoration(
         color: GlobalVariables.defaultGray,
       ),
-      child: Stack(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Align(
-            alignment: const AlignmentDirectional(0, 1),
-            child: Image.asset(
-              'assets/images/Footer_AuthNew.png',
-              width: screenWidth(context),
-              height: screenHeightPercentage(context, percentage: 0.25),
-              fit: BoxFit.fitWidth,
-            ),
+          Image.asset(
+            'assets/images/Footer_AuthNew.png',
+            fit: BoxFit.fitWidth,
           ),
         ],
       ),
