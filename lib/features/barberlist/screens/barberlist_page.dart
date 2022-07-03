@@ -53,7 +53,7 @@ class _BarberListPageState extends State<BarberListPage> {
           backgroundColor: GlobalVariables.defaultGray,
           body: SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              padding: EdgeInsets.symmetric(horizontal: 12.w),
               child: Column(
                 children: [
                   SearchBar(

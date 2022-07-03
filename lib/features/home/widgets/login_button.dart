@@ -14,47 +14,39 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
-            width: 45.w,
-            clipBehavior: Clip.antiAlias,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-            ),
-            child: Image.asset(
-              'assets/images/Login_user_blank.png',
+          InkWell(
+            onTap: () => onTap(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Hai, sudah punya akun?',
+                  style: GoogleFonts.poppins(
+                    color: GlobalVariables.blackSoft1,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                  ),
+                ),
+                Text(
+                  'Tap di sini untuk masuk',
+                  style: GoogleFonts.poppins(
+                    color: GlobalVariables.blackSoft1,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                  ),
+                ),
+              ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 15.w),
-            child: InkWell(
-              onTap: () => onTap(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Kamu belum masuk',
-                    style: GoogleFonts.poppins(
-                      color: GlobalVariables.blackSoft1,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 17.sp,
-                    ),
-                  ),
-                  Text(
-                    'Tap di sini untuk masuk',
-                    style: GoogleFonts.poppins(
-                      color: GlobalVariables.blackSoft1,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 15.sp,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          )
+          const Icon(
+            Icons.account_circle_outlined,
+            color: GlobalVariables.blackSoft1,
+            size: 35,
+          ),
         ],
       ),
     );

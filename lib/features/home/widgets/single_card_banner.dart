@@ -9,18 +9,15 @@ class SingleCardBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.r),
-      ),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 1.w),
       child: Container(
-        width: 1.sw,
-        height: 0.55.sw,
+        width: 426.w,
+        height: 240.h,
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.r),
           image: DecorationImage(
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
             image: Image.asset(
               item.imageUrl,
             ).image,
@@ -28,12 +25,5 @@ class SingleCardBanner extends StatelessWidget {
         ),
       ),
     );
-    // return ClipRRect(
-    //   borderRadius: BorderRadius.circular(30.r),
-    //   child: Image.asset(
-    //     item.imageUrl,
-    //     fit: BoxFit.contain,
-    //   ),
-    // );
   }
 }

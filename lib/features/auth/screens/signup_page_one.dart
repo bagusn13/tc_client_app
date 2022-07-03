@@ -56,99 +56,88 @@ class _SignUpPageOneState extends State<SignUpPageOne> {
         ),
         child: Stack(
           children: [
-            // const BackgroundAuthRev(),
+            const BackgroundAuthRev(),
             Scaffold(
-              backgroundColor: GlobalVariables.defaultGray,
+              backgroundColor: GlobalVariables.transparent,
               body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                  child: SingleChildScrollView(
-                    reverse: false,
-                    physics: const BouncingScrollPhysics(),
-                    child: Form(
-                      key: _signUpOneFormKey,
-                      child: Column(
-                        children: <Widget>[
-                          const HeaderBack(),
-                          SizedBox(
-                            height: 60.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Buat akun baru',
-                                  maxLines: 1,
-                                  textAlign: TextAlign.left,
-                                  style: GoogleFonts.lexendDeca(
-                                    color: GlobalVariables.blackSoft1,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 22.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25.h,
-                          ),
-                          EmailForm(
-                            controller: _emailController,
-                          ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
-                          PasswordForm(
-                            controller: _passwordController,
-                          ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
-                          ConfirmPasswordForm(
-                            confirmPassController: _confirmPasswordController,
-                            passController: _passwordController,
-                          ),
-                          SizedBox(
-                            height: 28.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: CustomButton(
-                              text: 'Selanjutnya',
-                              fontSize: 18.sp,
-                              onTap: () {
-                                _navigateToNextPage();
-                              },
-                              size: Size(1.sw, 45.h),
-                              borderRadius: 8.r,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: 18.w),
+                  child: Form(
+                    key: _signUpOneFormKey,
+                    child: CustomScrollView(
+                      scrollDirection: Axis.vertical,
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
                             children: [
-                              Text(
-                                'Sudah punya akun?',
-                                style: GoogleFonts.getFont(
-                                  'Lexend Deca',
-                                  color: GlobalVariables.blackSoft1,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14.sp,
-                                ),
+                              const HeaderBack(),
+                              SizedBox(height: 60.h),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Buat akun baru',
+                                    maxLines: 1,
+                                    textAlign: TextAlign.left,
+                                    style: GoogleFonts.lexendDeca(
+                                      color: GlobalVariables.blackSoft1,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 22.sp,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              CustomTextButton(
-                                text: 'Masuk di sini',
-                                fontSize: 14.sp,
+                              SizedBox(height: 25.h),
+                              EmailForm(
+                                controller: _emailController,
+                              ),
+                              SizedBox(height: 16.h),
+                              PasswordForm(
+                                controller: _passwordController,
+                              ),
+                              SizedBox(height: 16.h),
+                              ConfirmPasswordForm(
+                                confirmPassController:
+                                    _confirmPasswordController,
+                                passController: _passwordController,
+                              ),
+                              SizedBox(height: 28.h),
+                              CustomButton(
+                                text: 'Selanjutnya',
+                                fontSize: 16.sp,
                                 onTap: () {
-                                  Navigator.pop(context);
+                                  _navigateToNextPage();
                                 },
-                                textColor: GlobalVariables.defaultOrange,
+                                size: Size(1.sw, 45.h),
+                                borderRadius: 8.r,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Sudah punya akun?',
+                                    style: GoogleFonts.getFont(
+                                      'Lexend Deca',
+                                      color: GlobalVariables.blackSoft1,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                  CustomTextButton(
+                                    text: 'Masuk di sini',
+                                    fontSize: 14.sp,
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    textColor: GlobalVariables.defaultOrange,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                   ),
                 ),

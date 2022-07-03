@@ -50,105 +50,96 @@ class _SigninPageState extends State<SigninPage> {
         ),
         child: Stack(
           children: [
-            // const BackgroundAuthRev(),
+            const BackgroundAuthRev(),
             Scaffold(
-              backgroundColor: GlobalVariables.defaultGray,
+              backgroundColor: GlobalVariables.transparent,
               body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                  child: SingleChildScrollView(
-                    reverse: true,
-                    physics: const BouncingScrollPhysics(),
-                    child: Form(
-                      key: _signInFormKey,
-                      child: Column(
-                        children: <Widget>[
-                          const HeaderBack(),
-                          SizedBox(
-                            height: 60.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Selamat Datang',
-                                  maxLines: 1,
-                                  textAlign: TextAlign.left,
-                                  style: GoogleFonts.lexendDeca(
-                                    color: GlobalVariables.blackSoft1,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 22.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25.h,
-                          ),
-                          EmailForm(
-                            controller: _emailController,
-                          ),
-                          SizedBox(
-                            height: 16.h,
-                          ),
-                          PasswordForm(
-                            controller: _passwordController,
-                          ),
-                          SizedBox(
-                            height: 28.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                CustomButton(
-                                  text: 'Masuk',
-                                  fontSize: 18.sp,
-                                  onTap: () {
-                                    if (_signInFormKey.currentState!
-                                        .validate()) {
-                                      print('valid');
-                                    } else {
-                                      print('no valid');
-                                    }
-                                  },
-                                  size: Size(1.sw / 2.35, 45.h),
-                                ),
-                                CustomTextButton(
-                                  text: 'Lupa Password?',
-                                  onTap: () {},
-                                  fontSize: 15.sp,
-                                  size: Size(1.sw / 2.35, 45.h),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: 18.w),
+                  child: Form(
+                    key: _signInFormKey,
+                    child: CustomScrollView(
+                      scrollDirection: Axis.vertical,
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
                             children: [
-                              Text(
-                                'Belum punya akun?',
-                                style: GoogleFonts.getFont(
-                                  'Lexend Deca',
-                                  color: GlobalVariables.blackSoft1,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14.sp,
-                                ),
+                              const HeaderBack(),
+                              SizedBox(height: 60.h),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Selamat Datang',
+                                    maxLines: 1,
+                                    textAlign: TextAlign.left,
+                                    style: GoogleFonts.lexendDeca(
+                                      color: GlobalVariables.blackSoft1,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 22.sp,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              CustomTextButton(
-                                text: 'Yuk daftar!',
-                                fontSize: 14.sp,
-                                onTap: _navigateToSignUp,
-                                textColor: GlobalVariables.defaultOrange,
+                              SizedBox(height: 25.h),
+                              EmailForm(
+                                controller: _emailController,
+                              ),
+                              SizedBox(height: 16.h),
+                              PasswordForm(
+                                controller: _passwordController,
+                              ),
+                              SizedBox(height: 28.h),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CustomButton(
+                                    text: 'Masuk',
+                                    fontSize: 16.sp,
+                                    onTap: () {
+                                      if (_signInFormKey.currentState!
+                                          .validate()) {
+                                        print('valid');
+                                      } else {
+                                        print('no valid');
+                                      }
+                                    },
+                                    size: Size(1.sw / 2.35, 45.h),
+                                  ),
+                                  CustomTextButton(
+                                    text: 'Lupa Password?',
+                                    onTap: () {},
+                                    fontSize: 14.sp,
+                                    size: Size(1.sw / 2.35, 45.h),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Belum punya akun?',
+                                    style: GoogleFonts.getFont(
+                                      'Lexend Deca',
+                                      color: GlobalVariables.blackSoft1,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                  CustomTextButton(
+                                    text: 'Yuk daftar!',
+                                    fontSize: 14.sp,
+                                    onTap: _navigateToSignUp,
+                                    textColor: GlobalVariables.defaultOrange,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                   ),
                 ),

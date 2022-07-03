@@ -51,27 +51,19 @@ class _HomePageState extends State<HomePage> {
           reverse: false,
           physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                SizedBox(
-                  height: 15.h,
-                ),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 20.h),
                 LoginButton(
                   onTap: widget.onTapLogin,
                 ),
-                SizedBox(
-                  height: 15.h,
-                ),
+                SizedBox(height: 20.h),
                 const Jumbotron(),
-                SizedBox(
-                  height: 16.h,
-                ),
+                SizedBox(height: 20.h),
                 const Categories(),
-                SizedBox(
-                  height: 18.h,
-                ),
+                SizedBox(height: 20.h),
                 const RegionSection(),
               ],
             ),

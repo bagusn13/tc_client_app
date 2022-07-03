@@ -12,39 +12,47 @@ class RegionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 5.w),
-              child: Text(
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12.h),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
                 'Mau cukur dimana hari ini?',
                 textAlign: TextAlign.start,
                 style: GoogleFonts.poppins(
                   color: GlobalVariables.blackSoft1,
                   fontWeight: FontWeight.w600,
-                  fontSize: 21.sp,
+                  fontSize: 22.sp,
                 ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(
-          width: 1.sw,
-          height: 170.h,
-          child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: regionitems.length,
-            padding: EdgeInsets.zero,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) =>
-                SingleCardRegion(item: regionitems[index]),
+            ],
           ),
-        ),
-      ],
+          SizedBox(
+            height: 5.h,
+          ),
+          Container(
+            color: GlobalVariables.transparent,
+            width: 1.sw,
+            height: 140.w,
+            child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemCount: regionitems.length,
+              separatorBuilder: (context, _) => SizedBox(width: 10.w),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) =>
+                  SingleCardRegion(item: regionitems[index]),
+            ),
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
+        ],
+      ),
     );
   }
 }

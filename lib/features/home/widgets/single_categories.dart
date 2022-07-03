@@ -28,9 +28,9 @@ class SingleCategory extends StatelessWidget {
             shape: const CircleBorder(),
             child: Image.asset(
               image,
-              width: 75.w,
-              height: 75.w,
-              fit: BoxFit.cover,
+              width: 65.w,
+              height: 65.w,
+              fit: BoxFit.fill,
             ),
           ),
           Padding(
@@ -41,7 +41,7 @@ class SingleCategory extends StatelessWidget {
                 textStyle: TextStyle(
                   color: GlobalVariables.blackSoft1,
                   fontWeight: FontWeight.w400,
-                  fontSize: 15.sp,
+                  fontSize: 14.sp,
                 ),
               ),
             ),

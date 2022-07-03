@@ -51,92 +51,75 @@ class _SignUpPageTwoState extends State<SignUpPageTwo> {
         ),
         child: Stack(
           children: [
-            // const BackgroundAuthRev(),
+            const BackgroundAuthRev(),
             Scaffold(
-              backgroundColor: GlobalVariables.defaultGray,
+              backgroundColor: GlobalVariables.transparent,
               body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                  child: SingleChildScrollView(
-                    reverse: false,
-                    physics: const BouncingScrollPhysics(),
-                    child: Form(
-                      key: _signUpTwoFormKey,
-                      child: Column(
-                        children: <Widget>[
-                          const HeaderBack(),
-                          SizedBox(
-                            height: 60.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Buat akun baru',
-                                  maxLines: 1,
-                                  textAlign: TextAlign.left,
-                                  style: GoogleFonts.lexendDeca(
-                                    color: GlobalVariables.blackSoft1,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 22.sp,
+                  padding: EdgeInsets.symmetric(horizontal: 18.w),
+                  child: Form(
+                    key: _signUpTwoFormKey,
+                    child: CustomScrollView(
+                      scrollDirection: Axis.vertical,
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
+                            children: [
+                              const HeaderBack(),
+                              SizedBox(height: 60.h),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Buat akun baru',
+                                    maxLines: 1,
+                                    textAlign: TextAlign.left,
+                                    style: GoogleFonts.lexendDeca(
+                                      color: GlobalVariables.blackSoft1,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 22.sp,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25.h,
-                          ),
-                          NameForm(
-                            controller: _firstNameController,
-                            label: 'Nama Depan',
-                          ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
-                          NameForm(
-                            controller: _lastNameController,
-                            label: 'Nama Belakang',
-                          ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
-                          PhoneForm(controller: _phoneController),
-                          SizedBox(
-                            height: 28.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: CustomButton(
-                              text: 'Daftar',
-                              fontSize: 18.sp,
-                              onTap: () {
-                                _navigateToOtpPage();
-                              },
-                              size: Size(1.sw, 45.h),
-                              borderRadius: 8.r,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Text(
-                              'By signing up, you agree to TempatCukur’s Terms of Service and Privacy Policy.',
-                              textAlign: TextAlign.left,
-                              maxLines: 2,
-                              style: GoogleFonts.lexendDeca(
-                                color: GlobalVariables.blackSoft1,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14.sp,
+                                ],
                               ),
-                            ),
+                              SizedBox(height: 25.h),
+                              NameForm(
+                                controller: _firstNameController,
+                                label: 'Nama Depan',
+                              ),
+                              SizedBox(height: 16.h),
+                              NameForm(
+                                controller: _lastNameController,
+                                label: 'Nama Belakang',
+                              ),
+                              SizedBox(height: 16.h),
+                              PhoneForm(controller: _phoneController),
+                              SizedBox(height: 28.h),
+                              CustomButton(
+                                text: 'Daftar',
+                                fontSize: 16.sp,
+                                onTap: () {
+                                  _navigateToOtpPage();
+                                },
+                                size: Size(1.sw, 45.h),
+                                borderRadius: 8.r,
+                              ),
+                              SizedBox(height: 5.h),
+                              Text(
+                                'By signing up, you agree to TempatCukur’s Terms of Service and Privacy Policy.',
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: GoogleFonts.lexendDeca(
+                                  color: GlobalVariables.blackSoft1,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                   ),
                 ),

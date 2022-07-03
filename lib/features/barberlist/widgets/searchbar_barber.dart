@@ -29,7 +29,7 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10.w, 20.h, 10.w, 10.h),
+      padding: EdgeInsets.only(top: 20.h, bottom: 10.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -40,7 +40,6 @@ class _SearchBarState extends State<SearchBar> {
             }),
             child: Container(
               height: 50.h,
-              // width: 50.h,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: GlobalVariables.transparent,

@@ -34,41 +34,38 @@ class _PhoneFormState extends State<PhoneForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w),
-      child: TextFormField(
-        focusNode: _phoneFocusNode,
-        keyboardType: TextInputType.phone,
-        controller: widget.controller,
-        obscureText: false,
-        decoration: formDecorNormal(
-          'Nomor Telepon',
-          _phoneErrVal,
-        ),
-        style: GoogleFonts.lexendDeca(
-          color: GlobalVariables.blackSoft1,
-          fontWeight: FontWeight.w400,
-          fontSize: 16.sp,
-        ),
-        validator: (value) {
-          if (value!.isEmpty) {
-            setState(() {
-              _phoneErrVal = true;
-            });
-            return 'Phone can\'t be empty';
-          } else if (!(value.isValidPhone())) {
-            setState(() {
-              _phoneErrVal = true;
-            });
-            return "Please enter valid phone";
-          } else {
-            setState(() {
-              _phoneErrVal = false;
-            });
-            return null;
-          }
-        },
+    return TextFormField(
+      focusNode: _phoneFocusNode,
+      keyboardType: TextInputType.phone,
+      controller: widget.controller,
+      obscureText: false,
+      decoration: formDecorNormal(
+        'Nomor Telepon',
+        _phoneErrVal,
       ),
+      style: GoogleFonts.lexendDeca(
+        color: GlobalVariables.blackSoft1,
+        fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
+      ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          setState(() {
+            _phoneErrVal = true;
+          });
+          return 'Phone can\'t be empty';
+        } else if (!(value.isValidPhone())) {
+          setState(() {
+            _phoneErrVal = true;
+          });
+          return "Please enter valid phone";
+        } else {
+          setState(() {
+            _phoneErrVal = false;
+          });
+          return null;
+        }
+      },
     );
   }
 }

@@ -34,41 +34,38 @@ class _EmailFormState extends State<EmailForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w),
-      child: TextFormField(
-        focusNode: _emailFocusNode,
-        keyboardType: TextInputType.emailAddress,
-        controller: widget.controller,
-        obscureText: false,
-        decoration: formDecorNormal(
-          'Email',
-          _emailErrVal,
-        ),
-        style: GoogleFonts.lexendDeca(
-          color: GlobalVariables.blackSoft1,
-          fontWeight: FontWeight.w400,
-          fontSize: 16.sp,
-        ),
-        validator: (value) {
-          if (value!.isEmpty) {
-            setState(() {
-              _emailErrVal = true;
-            });
-            return 'Email can\'t be empty';
-          } else if (!(value.isValidEmail())) {
-            setState(() {
-              _emailErrVal = true;
-            });
-            return "Please enter valid email";
-          } else {
-            setState(() {
-              _emailErrVal = false;
-            });
-            return null;
-          }
-        },
+    return TextFormField(
+      focusNode: _emailFocusNode,
+      keyboardType: TextInputType.emailAddress,
+      controller: widget.controller,
+      obscureText: false,
+      decoration: formDecorNormal(
+        'Email',
+        _emailErrVal,
       ),
+      style: GoogleFonts.lexendDeca(
+        color: GlobalVariables.blackSoft1,
+        fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
+      ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          setState(() {
+            _emailErrVal = true;
+          });
+          return 'Email can\'t be empty';
+        } else if (!(value.isValidEmail())) {
+          setState(() {
+            _emailErrVal = true;
+          });
+          return "Please enter valid email";
+        } else {
+          setState(() {
+            _emailErrVal = false;
+          });
+          return null;
+        }
+      },
     );
   }
 }

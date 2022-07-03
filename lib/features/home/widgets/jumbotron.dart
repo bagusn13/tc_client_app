@@ -18,48 +18,53 @@ class _JumbotronState extends State<Jumbotron> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 1.sw,
-      height: 0.55.sw,
-      child: Stack(
-        children: [
-          PageView.builder(
-            physics: const BouncingScrollPhysics(),
-            controller: _pageViewController ??= PageController(initialPage: 0),
-            itemCount: _banneritems.length,
-            itemBuilder: (context, index) =>
-                SingleCardBanner(item: _banneritems[index]),
-          ),
-          Align(
-            alignment: const AlignmentDirectional(0, 1),
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 15.h),
-              child: SmoothPageIndicator(
-                controller: _pageViewController ??=
-                    PageController(initialPage: 0),
-                count: _banneritems.length,
-                axisDirection: Axis.horizontal,
-                onDotClicked: (i) {
-                  _pageViewController!.animateToPage(
-                    i,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.ease,
-                  );
-                },
-                effect: ExpandingDotsEffect(
-                  expansionFactor: 2,
-                  spacing: 6.w,
-                  radius: 16.r,
-                  dotWidth: 10.w,
-                  dotHeight: 10.h,
-                  dotColor: const Color(0xFF9E9E9E),
-                  activeDotColor: const Color(0xFFFAC13B),
-                  paintStyle: PaintingStyle.fill,
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: Container(
+        color: GlobalVariables.transparent,
+        width: 426.w,
+        height: 240.h,
+        child: Stack(
+          children: [
+            PageView.builder(
+              physics: const BouncingScrollPhysics(),
+              controller: _pageViewController ??=
+                  PageController(initialPage: 0),
+              itemCount: _banneritems.length,
+              itemBuilder: (context, index) =>
+                  SingleCardBanner(item: _banneritems[index]),
+            ),
+            Align(
+              alignment: const AlignmentDirectional(0, 1),
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 15.h),
+                child: SmoothPageIndicator(
+                  controller: _pageViewController ??=
+                      PageController(initialPage: 0),
+                  count: _banneritems.length,
+                  axisDirection: Axis.horizontal,
+                  onDotClicked: (i) {
+                    _pageViewController!.animateToPage(
+                      i,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  },
+                  effect: ExpandingDotsEffect(
+                    expansionFactor: 2,
+                    spacing: 6.w,
+                    radius: 16.r,
+                    dotWidth: 10.w,
+                    dotHeight: 10.h,
+                    dotColor: const Color(0xFF9E9E9E),
+                    activeDotColor: const Color(0xFFFAC13B),
+                    paintStyle: PaintingStyle.fill,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

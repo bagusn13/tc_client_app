@@ -6,17 +6,12 @@ class AppbarLogout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Align(
-          alignment: const AlignmentDirectional(0, 0.5),
-          child: Image.asset(
-            'assets/images/1500x1500_full_logo_white.png',
-            width: 170.w,
-            fit: BoxFit.cover,
-          ),
-        ),
-      ],
+    return Align(
+      alignment: const AlignmentDirectional(0, 0.2),
+      child: Image.asset(
+        'assets/images/full_logo_white.png',
+        height: 35.h,
+      ),
     );
   }
 }

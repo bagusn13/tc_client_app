@@ -13,9 +13,12 @@ class BackgroundAuthRev extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Image.asset(
-            'assets/images/Footer_AuthNew.png',
-            fit: BoxFit.fitWidth,
+          AspectRatio(
+            aspectRatio: 16 / 9,
+            child: Image.asset(
+              'assets/images/Footer_Settings.png',
+              fit: BoxFit.cover,
+            ),
           ),
         ],
       ),

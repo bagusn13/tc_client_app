@@ -43,43 +43,40 @@ class _ConfirmPasswordFormState extends State<ConfirmPasswordForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w),
-      child: TextFormField(
-        focusNode: _confirmPasswordFocusNode,
-        keyboardType: TextInputType.text,
-        controller: widget.confirmPassController,
-        obscureText: !_confirmPasswordVisibility,
-        decoration: formDecorPassword(
-          'Ketik ulang password',
-          _confirmPasswordErrVal,
-          onTapEye,
-          _confirmPasswordVisibility,
-        ),
-        style: GoogleFonts.lexendDeca(
-          color: const Color(0xFF2B343A),
-          fontWeight: FontWeight.w400,
-          fontSize: 16.sp,
-        ),
-        validator: (value) {
-          if (value!.isEmpty) {
-            setState(() {
-              _confirmPasswordErrVal = true;
-            });
-            return 'Password can\'t be empty';
-          } else if (value != widget.passController.text) {
-            setState(() {
-              _confirmPasswordErrVal = true;
-            });
-            return 'Password not match';
-          } else {
-            setState(() {
-              _confirmPasswordErrVal = false;
-            });
-            return null;
-          }
-        },
+    return TextFormField(
+      focusNode: _confirmPasswordFocusNode,
+      keyboardType: TextInputType.text,
+      controller: widget.confirmPassController,
+      obscureText: !_confirmPasswordVisibility,
+      decoration: formDecorPassword(
+        'Ketik ulang password',
+        _confirmPasswordErrVal,
+        onTapEye,
+        _confirmPasswordVisibility,
       ),
+      style: GoogleFonts.lexendDeca(
+        color: const Color(0xFF2B343A),
+        fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
+      ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          setState(() {
+            _confirmPasswordErrVal = true;
+          });
+          return 'Password can\'t be empty';
+        } else if (value != widget.passController.text) {
+          setState(() {
+            _confirmPasswordErrVal = true;
+          });
+          return 'Password not match';
+        } else {
+          setState(() {
+            _confirmPasswordErrVal = false;
+          });
+          return null;
+        }
+      },
     );
   }
 }

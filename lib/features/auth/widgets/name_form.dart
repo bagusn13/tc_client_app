@@ -36,57 +36,54 @@ class _NameFormState extends State<NameForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w),
-      child: TextFormField(
-        focusNode: _nameFocusNode,
-        keyboardType: TextInputType.name,
-        textCapitalization: TextCapitalization.words,
-        controller: widget.controller,
-        obscureText: false,
-        decoration: formDecorNormal(
-          widget.label,
-          _nameErrVal,
-        ),
-        style: GoogleFonts.lexendDeca(
-          color: GlobalVariables.blackSoft1,
-          fontWeight: FontWeight.w400,
-          fontSize: 16.sp,
-        ),
-        validator: (value) {
-          if (value!.isEmpty) {
-            setState(() {
-              _nameErrVal = true;
-            });
-            return 'First name can\'t be empty';
-          } else if (value.length < 2) {
-            setState(() {
-              _nameErrVal = true;
-            });
-            return 'Too short';
-          } else if (value.contains(' ')) {
-            setState(() {
-              _nameErrVal = true;
-            });
-            return 'Space not allowed';
-          } else if (value.hasSpecialCharacters()) {
-            setState(() {
-              _nameErrVal = true;
-            });
-            return 'Special characters not allowed';
-          } else if (value.hasDigits()) {
-            setState(() {
-              _nameErrVal = true;
-            });
-            return 'Number not allowed';
-          } else {
-            setState(() {
-              _nameErrVal = false;
-            });
-            return null;
-          }
-        },
+    return TextFormField(
+      focusNode: _nameFocusNode,
+      keyboardType: TextInputType.name,
+      textCapitalization: TextCapitalization.words,
+      controller: widget.controller,
+      obscureText: false,
+      decoration: formDecorNormal(
+        widget.label,
+        _nameErrVal,
       ),
+      style: GoogleFonts.lexendDeca(
+        color: GlobalVariables.blackSoft1,
+        fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
+      ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          setState(() {
+            _nameErrVal = true;
+          });
+          return 'First name can\'t be empty';
+        } else if (value.length < 2) {
+          setState(() {
+            _nameErrVal = true;
+          });
+          return 'Too short';
+        } else if (value.contains(' ')) {
+          setState(() {
+            _nameErrVal = true;
+          });
+          return 'Space not allowed';
+        } else if (value.hasSpecialCharacters()) {
+          setState(() {
+            _nameErrVal = true;
+          });
+          return 'Special characters not allowed';
+        } else if (value.hasDigits()) {
+          setState(() {
+            _nameErrVal = true;
+          });
+          return 'Number not allowed';
+        } else {
+          setState(() {
+            _nameErrVal = false;
+          });
+          return null;
+        }
+      },
     );
   }
 }

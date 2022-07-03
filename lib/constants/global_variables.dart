@@ -156,7 +156,7 @@ InputDecoration formDecorNormal(String labelText, bool errVal) {
       color:
           errVal ? GlobalVariables.borderErrorColor : GlobalVariables.cadetGray,
       fontWeight: FontWeight.w400,
-      fontSize: 16.sp,
+      fontSize: 14.sp,
     ),
     enabledBorder: outlineFieldNormal(),
     focusedBorder: outlineFieldNormal(),
@@ -175,7 +175,7 @@ InputDecoration formDecorPassword(
     labelStyle: GoogleFonts.lexendDeca(
       color: errVal ? Colors.redAccent : const Color(0xFF95A1AC),
       fontWeight: FontWeight.w400,
-      fontSize: 16.sp,
+      fontSize: 14.sp,
     ),
     enabledBorder: outlineFieldNormal(),
     focusedBorder: outlineFieldNormal(),

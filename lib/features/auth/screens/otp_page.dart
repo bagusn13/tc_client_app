@@ -46,187 +46,152 @@ class _OtpPageState extends State<OtpPage> {
         ),
         child: Stack(
           children: [
-            // const BackgroundAuthRev(),
+            const BackgroundAuthRev(),
             Scaffold(
               resizeToAvoidBottomInset: false,
-              backgroundColor: GlobalVariables.defaultGray,
+              backgroundColor: GlobalVariables.transparent,
               body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  padding: EdgeInsets.symmetric(horizontal: 18.w),
                   child: SizedBox(
                     width: double.infinity,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const HeaderBack(),
-                          SizedBox(
-                            height: 55.h,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Verifikasi OTP',
-                                maxLines: 1,
-                                style: GoogleFonts.lexendDeca(
-                                  color: GlobalVariables.blackSoft1,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 22.sp,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 55.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 30.w),
-                            child: Text(
-                              'Masukkan kode OTP yang telah dikirim ke email kamu',
-                              maxLines: 2,
-                              textAlign: TextAlign.center,
+                    child: Column(
+                      children: [
+                        const HeaderBack(),
+                        SizedBox(height: 50.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Verifikasi OTP',
+                              maxLines: 1,
                               style: GoogleFonts.lexendDeca(
                                 color: GlobalVariables.blackSoft1,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 22.sp,
                               ),
                             ),
+                          ],
+                        ),
+                        SizedBox(height: 50.h),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 25.w),
+                          child: Text(
+                            'Masukkan kode OTP yang telah dikirim ke email kamu',
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lexendDeca(
+                              color: GlobalVariables.blackSoft1,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16.sp,
+                            ),
                           ),
-                          SizedBox(
-                            height: 30.h,
+                        ),
+                        SizedBox(height: 30.h),
+                        SizedBox(
+                          height: 70.h,
+                          child: Form(
+                            key: _otpFormKey,
+                            child: PinCodeTextField(
+                              appContext: context,
+                              length: 4,
+                              obscureText: false,
+                              animationType: AnimationType.fade,
+                              animationDuration:
+                                  const Duration(milliseconds: 300),
+                              keyboardType: TextInputType.number,
+                              controller: _otpController,
+                              errorAnimationController: _errorController,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp(r'[0-9]')),
+                              ],
+                              pinTheme: PinTheme(
+                                activeColor: GlobalVariables.borderColor,
+                                selectedColor: GlobalVariables.defaultOrange,
+                                inactiveColor: GlobalVariables.borderColor,
+                                disabledColor: GlobalVariables.borderColor,
+                                fieldWidth: 50.w,
+                                fieldHeight: 62.h,
+                                shape: PinCodeFieldShape.box,
+                                borderRadius: BorderRadius.circular(8.r),
+                              ),
+                              onChanged: (String value) {
+                                setState(() {
+                                  currentPin = value;
+                                });
+                              },
+                            ),
                           ),
-                          SizedBox(
-                            height: 70.h,
-                            child: Form(
-                              key: _otpFormKey,
-                              child: PinCodeTextField(
-                                appContext: context,
-                                length: 4,
-                                obscureText: false,
-                                animationType: AnimationType.fade,
-                                animationDuration:
-                                    const Duration(milliseconds: 300),
-                                keyboardType: TextInputType.number,
-                                controller: _otpController,
-                                errorAnimationController: _errorController,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp(r'[0-9]')),
-                                ],
-                                pinTheme: PinTheme(
-                                  activeColor: GlobalVariables.borderColor,
-                                  selectedColor: GlobalVariables.defaultOrange,
-                                  inactiveColor: GlobalVariables.borderColor,
-                                  disabledColor: GlobalVariables.borderColor,
-                                  fieldWidth: 50.w,
-                                  fieldHeight: 70.h,
-                                  shape: PinCodeFieldShape.box,
-                                  borderRadius: BorderRadius.circular(8.r),
-                                ),
-                                onChanged: (String value) {
+                        ),
+                        SizedBox(height: 40.h),
+                        Text(
+                          "Tidak menerima kode OTP?",
+                          style: GoogleFonts.lexendDeca(
+                            color: GlobalVariables.blackSoft1,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        hasExpired
+                            ? CustomTextButton(
+                                text: 'Kirim ulang kode',
+                                fontSize: 14.sp,
+                                onTap: () {},
+                                textColor: GlobalVariables.red,
+                              )
+                            : TweenAnimationBuilder(
+                                duration: const Duration(minutes: 2),
+                                tween: Tween(
+                                    begin: const Duration(minutes: 2),
+                                    end: Duration.zero),
+                                builder: (context, Duration value, child) {
+                                  final minutes = value.inMinutes;
+                                  final seconds = value.inSeconds % 60;
+                                  return Text(
+                                    '($minutes : $seconds)',
+                                    style: GoogleFonts.lexendDeca(
+                                        color: GlobalVariables.red,
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600),
+                                  );
+                                },
+                                onEnd: () {
                                   setState(() {
-                                    currentPin = value;
+                                    hasExpired = true;
                                   });
                                 },
                               ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 55.h,
-                          ),
-                          Text(
-                            "Tidak menerima kode OTP?",
-                            style: GoogleFonts.lexendDeca(
-                              color: GlobalVariables.blackSoft1,
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          hasExpired
-                              ? CustomTextButton(
-                                  text: 'Kirim ulang kode',
-                                  fontSize: 15.sp,
-                                  onTap: () {},
-                                  textColor: GlobalVariables.red,
-                                )
-                              : TweenAnimationBuilder(
-                                  duration: const Duration(minutes: 2),
-                                  tween: Tween(
-                                      begin: const Duration(minutes: 2),
-                                      end: Duration.zero),
-                                  builder: (context, Duration value, child) {
-                                    final minutes = value.inMinutes;
-                                    final seconds = value.inSeconds % 60;
-                                    return Text(
-                                      '($minutes : $seconds)',
-                                      style: GoogleFonts.lexendDeca(
-                                          color: GlobalVariables.red,
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w600),
-                                    );
-                                  },
-                                  onEnd: () {
-                                    setState(() {
-                                      hasExpired = true;
-                                    });
-                                  },
-                                ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: const AlignmentDirectional(0, 0.62),
-              child: Material(
-                type: MaterialType.transparency,
-                child: Container(
-                  color: GlobalVariables.defaultGray,
-                  height: 110.h,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15.w),
-                          child: CustomButton(
-                            text: 'Verifikasi',
-                            fontSize: 18.sp,
-                            onTap: () {
-                              _otpFormKey.currentState!.validate();
-                              if (currentPin.length != 4) {
-                                _errorController.add(ErrorAnimationType.shake);
-                                setState(() {
-                                  hasError = true;
-                                });
-                              } else {
-                                setState(() {
-                                  hasError = false;
-                                });
-                              }
-                            },
-                            size: Size(1.sw, 45.h),
-                            borderRadius: 8.r,
-                          ),
+                        SizedBox(height: 130.h),
+                        CustomButton(
+                          text: 'Verifikasi',
+                          fontSize: 16.sp,
+                          onTap: () {
+                            _otpFormKey.currentState!.validate();
+                            if (currentPin.length != 4) {
+                              _errorController.add(ErrorAnimationType.shake);
+                              setState(() {
+                                hasError = true;
+                              });
+                            } else {
+                              setState(() {
+                                hasError = false;
+                              });
+                            }
+                          },
+                          size: Size(1.sw, 45.h),
+                          borderRadius: 8.r,
                         ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15.w),
-                          child: Text(
-                            'By signing up, you agree to TempatCukur’s Terms of Service and Privacy Policy.',
-                            textAlign: TextAlign.left,
-                            maxLines: 2,
-                            style: GoogleFonts.lexendDeca(
-                              color: GlobalVariables.blackSoft1,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14.sp,
-                            ),
+                        SizedBox(height: 5.h),
+                        Text(
+                          'By signing up, you agree to TempatCukur’s Terms of Service and Privacy Policy.',
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          style: GoogleFonts.lexendDeca(
+                            color: GlobalVariables.blackSoft1,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14.sp,
                           ),
                         ),
                       ],
@@ -234,7 +199,7 @@ class _OtpPageState extends State<OtpPage> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

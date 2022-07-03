@@ -12,24 +12,16 @@ class SingleCardRegion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(2.w, 5.h, 2.w, 5.h),
-      child: Card(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        elevation: 4,
-        shape: RoundedRectangleBorder(
+    return AspectRatio(
+      aspectRatio: 1 / 1,
+      child: Container(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.r),
-        ),
-        child: Container(
-          width: 135.w,
-          height: 170.h,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: Image.asset(
-                item.imageUrl,
-              ).image,
-            ),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: Image.asset(
+              item.imageUrl,
+            ).image,
           ),
         ),
       ),
